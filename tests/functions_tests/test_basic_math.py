@@ -872,4 +872,40 @@ class TestUnaryFunctionsZeroDimension(UnaryFunctionsTestBase,
         return x, gy
 
 
+class TestNotSupportOperation(unittest.TestCase):
+
+    def setUp(self):
+        self.x = chainer.Variable(numpy.zeros(10))
+        self.y = chainer.Variable(numpy.zeros(10))
+
+    #def test_lt(self):
+    #    with self.assertRaises(NotImplementedError):
+    #        self.x < self.y
+
+    def test_le(self):
+        with self.assertRaises(NotImplementedError):
+            self.x <= self.y
+
+    def test_eq(self):
+        with self.assertRaises(NotImplementedError):
+            self.x == self.y
+
+    def test_ne(self):
+        with self.assertRaises(NotImplementedError):
+            self.x != self.y
+
+    def test_gt(self):
+        with self.assertRaises(NotImplementedError):
+            self.x > self.y
+
+    def test_ge(self):
+        with self.assertRaises(NotImplementedError):
+            self.x >= self.y
+
+    def test_nonzero(self):
+        with self.assertRaises(NotImplementedError):
+            if self.x:
+                pass
+
+
 testing.run_module(__name__, __file__)
